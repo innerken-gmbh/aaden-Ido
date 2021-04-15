@@ -1,5 +1,6 @@
 package ido.demo.model
 
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import javax.persistence.*
 
 @Entity
@@ -12,8 +13,11 @@ class State : ModelWithId() {
     lateinit var name: String
 
     @OneToOne(optional = false)
-    lateinit var member: Member
+    lateinit var stateManager: Member
 
     var revertable = true
 
+    @JsonManagedReference
+    @ManyToOne
+    var nestStates: State? = null
 }
