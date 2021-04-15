@@ -123,6 +123,7 @@
                         <option>all-open:annotation=javax.persistence.Entity</option>
                         <option>all-open:annotation=javax.persistence.Embeddable</option>
                     </pluginOptions>
+                    <languageVersion>1.4</languageVersion>
                 </configuration>
                 <dependencies>
                     <dependency>
