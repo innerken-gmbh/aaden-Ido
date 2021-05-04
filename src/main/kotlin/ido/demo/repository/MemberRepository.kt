@@ -1,18 +1,12 @@
 package ido.demo.repository
 
 import ido.demo.model.Member
-import ido.demo.model.ProjectFollower
-import ido.demo.model.ProjectManager
 
 import org.springframework.data.jpa.repository.JpaRepository
+import java.util.*
+
 
 interface MemberRepository : JpaRepository<Member, Long> {
+    fun findByName(name: String): Optional<Member>
 }
 
-interface ProjectManagerRepository : JpaRepository<ProjectManager, Long> {
-
-}
-
-interface ProjectFollowerRepository : JpaRepository<ProjectFollower, Long> {
-
-}

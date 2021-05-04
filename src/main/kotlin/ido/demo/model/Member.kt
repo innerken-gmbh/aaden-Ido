@@ -8,20 +8,12 @@ import java.util.*
 import javax.persistence.*
 
 
-enum class Position(val value: String) {
-    Manager("manager"),
-    Follower("follower"),
-    Assistant("assistant"),
-}
-
 @Entity
 class Member : ModelWithId() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     override var id: Long? = null
 
-    @Column(nullable = false)
-    lateinit var position: Position
 
     @Column(nullable = false)
     lateinit var name: String
@@ -41,17 +33,7 @@ class Member : ModelWithId() {
     @Temporal(TemporalType.TIMESTAMP)
     lateinit var updatedAt: Date
 
-}
-
-@Entity
-class ProjectManager :Member(){
     @JsonBackReference
     @OneToMany(cascade = [CascadeType.ALL], mappedBy = "user")
-    var manageList = mutableListOf<Project>()
-}
-@Entity
-class ProjectFollower :Member(){
-    @JsonBackReference
-    @OneToMany(cascade = [CascadeType.ALL], mappedBy = "user")
-    var projectList = mutableListOf<Project>()
+    var jobList = mutableListOf<MandP>()
 }
